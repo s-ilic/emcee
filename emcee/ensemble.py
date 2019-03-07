@@ -95,6 +95,10 @@ class EnsembleSampler(object):
         self._weights = np.atleast_1d(self._weights).astype(float)
         self._weights /= np.sum(self._weights)
 
+        self.ct_save = 0 # NEW SILIC
+        self.tmp_accepted = [] # NEW SILIC
+        self.tmp_state = [] # NEW SILIC
+
         self.pool = pool
         self.vectorize = vectorize
         self.blobs_dtype = blobs_dtype
@@ -186,6 +190,7 @@ class EnsembleSampler(object):
                iterations=1,
                tune=False,
                thin_by=1, thin=None,
+               save_every=1,
                store=True, progress=False):
         """Advance the chain as a generator
 
@@ -277,6 +282,12 @@ class EnsembleSampler(object):
             if thin_by <= 0:
                 raise ValueError("Invalid thinning argument")
 
+            # BEGIN NEW SILIC
+            save_every = int(save_every)
+            if save_every <= 0:
+                raise ValueError("Invalid save_every argument")
+            # END NEW SILIC
+
             yield_step = thin_by
             checkpoint_step = thin_by
             iterations = int(iterations)
@@ -310,7 +321,18 @@ class EnsembleSampler(object):
 
                     # Save the new step
                     if store and (i + 1) % checkpoint_step == 0:
-                        self.backend.save_step(state, accepted)
+                        #self.backend.save_step(state, accepted)
+                        # BEGIN NEW SILIC
+                        self.ct_save += 1
+                        self.tmp_state.append(state)
+                        self.tmp_accepted.append(accepted)
+                        if self.ct_save == save_every:
+                            for ix in range(save_every):
+                                self.backend.save_step(self.tmp_state[i], self.tmp_accepted[i])
+                            self.ct_save = 0
+                            self.tmp_state = []
+                            self.tmp_accepted = []
+                        # END NEW SILIC
 
                     pbar.update(1)
                     i += 1
