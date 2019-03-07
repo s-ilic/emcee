@@ -19,7 +19,7 @@ builtins.__EMCEE_SETUP__ = True
 import emcee  # NOQA
 
 setup(
-    name="emcee",
+    name="my_emcee",
     version=emcee.__version__,
     author="Daniel Foreman-Mackey",
     author_email="foreman.mackey@gmail.com",
