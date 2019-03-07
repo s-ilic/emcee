@@ -19,6 +19,7 @@ from .moves import StretchMove
 from .pbar import get_progress_bar
 from .utils import deprecated, deprecation_warning
 
+from copy import deepcopy # NEW SILIC
 
 class EnsembleSampler(object):
     """An ensemble MCMC sampler
@@ -324,8 +325,8 @@ class EnsembleSampler(object):
                         #self.backend.save_step(state, accepted)
                         # BEGIN NEW SILIC
                         self.ct_save += 1
-                        self.tmp_state.append(state)
-                        self.tmp_accepted.append(accepted)
+                        self.tmp_state.append(deepcopy(state))
+                        self.tmp_accepted.append(deepcopy(accepted))
                         self.backend.save_step(self.tmp_state, self.tmp_accepted, self.ct_save == save_every)
                         if self.ct_save == save_every:
                             self.ct_save = 0
