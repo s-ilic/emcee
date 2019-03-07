@@ -2,7 +2,7 @@
 
 from __future__ import division, print_function
 
-from emcee import moves
+from my_emcee import moves
 from .test_proposal import _test_normal, _test_uniform
 
 __all__ = ["test_normal_walk", "test_uniform_walk"]

@@ -4,9 +4,9 @@ from __future__ import print_function, absolute_import
 
 __version__ = "3.0rc2"
 __bibtex__ = """
-@article{emcee,
+@article{my_emcee,
    author = {{Foreman-Mackey}, D. and {Hogg}, D.~W. and {Lang}, D. and {Goodman}, J.},
-    title = {emcee: The MCMC Hammer},
+    title = {my_emcee: The MCMC Hammer},
   journal = {PASP},
      year = 2013,
    volume = 125,

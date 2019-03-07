@@ -7,7 +7,7 @@ import sys
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
-from emcee import __version__  # NOQA
+from my_emcee import __version__  # NOQA
 
 extensions = [
     "sphinx.ext.autodoc",
@@ -18,7 +18,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
 
-project = 'emcee'
+project = 'my_emcee'
 copyright = '2012-2017, Dan Foreman-Mackey & contributors'
 version = __version__
 release = __version__

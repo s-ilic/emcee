@@ -9,7 +9,7 @@ import h5py
 from multiprocessing import Pool
 
 sys.path.append(os.path.abspath(os.path.join(__file__, "..", "..", "..")))
-import emcee
+import my_emcee
 
 # import acor
 
@@ -43,14 +43,14 @@ def _worker(args):
     cov = random_cov(ndim)
     icov = np.linalg.inv(cov)
 
-    ens_samp = emcee.EnsembleSampler(nwalkers, ndim, lnprobfn,
+    ens_samp = my_emcee.EnsembleSampler(nwalkers, ndim, lnprobfn,
             args=[icov])
     ens_samp.random_state = _random.get_state()
     pos, lnprob, state = ens_samp.run_mcmc(np.random.randn(nwalkers * ndim)
             .reshape([nwalkers, ndim]), nsteps)
 
     proposal = np.diag(cov.diagonal())
-    mh_samp = emcee.MHSampler(proposal, ndim, lnprobfn,
+    mh_samp = my_emcee.MHSampler(proposal, ndim, lnprobfn,
             args=[icov])
     mh_samp.random_state = state
     mh_samp.run_mcmc(np.random.randn(ndim), nsteps)

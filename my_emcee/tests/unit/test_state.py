@@ -3,8 +3,8 @@
 from __future__ import division, print_function
 
 import numpy as np
-from emcee.state import State
-from emcee import EnsembleSampler
+from my_emcee.state import State
+from my_emcee import EnsembleSampler
 
 
 def test_back_compat(seed=1234):

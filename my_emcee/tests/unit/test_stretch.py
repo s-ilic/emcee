@@ -7,9 +7,9 @@ import warnings
 import pytest
 import numpy as np
 
-from emcee import moves
-from emcee.state import State
-from emcee.model import Model
+from my_emcee import moves
+from my_emcee.state import State
+from my_emcee.model import Model
 
 __all__ = ["test_live_dangerously"]
 

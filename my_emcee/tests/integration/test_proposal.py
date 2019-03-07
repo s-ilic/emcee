@@ -5,7 +5,7 @@ from __future__ import division, print_function
 import numpy as np
 from scipy import stats
 
-import emcee
+import my_emcee
 
 __all__ = ["_test_normal", "_test_uniform"]
 
@@ -37,7 +37,7 @@ def _test_normal(proposal, ndim=1, nwalkers=32, nsteps=2000, seed=1234,
     else:
         lp = normal_log_prob
 
-    sampler = emcee.EnsembleSampler(nwalkers, ndim, lp,
+    sampler = my_emcee.EnsembleSampler(nwalkers, ndim, lp,
                                     moves=proposal, pool=pool)
     if hasattr(proposal, "ntune") and proposal.ntune > 0:
         coords = sampler.run_mcmc(coords, proposal.ntune, tune=True)
@@ -69,7 +69,7 @@ def _test_uniform(proposal, nwalkers=32, nsteps=2000, seed=1234):
     # Initialize the ensemble and proposal.
     coords = np.random.rand(nwalkers, 1)
 
-    sampler = emcee.EnsembleSampler(nwalkers, 1, normal_log_prob,
+    sampler = my_emcee.EnsembleSampler(nwalkers, 1, normal_log_prob,
                                     moves=proposal)
     sampler.run_mcmc(coords, nsteps)
 

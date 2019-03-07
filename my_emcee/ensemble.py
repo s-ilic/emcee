@@ -31,7 +31,7 @@ class EnsembleSampler(object):
             posterior probability (up to an additive constant) for that
             position.
         moves (Optional): This can be a single move object, a list of moves,
-            or a "weighted" list of the form ``[(emcee.moves.StretchMove(),
+            or a "weighted" list of the form ``[(my_emcee.moves.StretchMove(),
             0.1), ...]``. When running, the sampler will randomly select a
             move from this list (optionally with weights) for each proposal.
             (default: :class:`StretchMove`)
@@ -328,7 +328,7 @@ class EnsembleSampler(object):
                         self.tmp_accepted.append(accepted)
                         if self.ct_save == save_every:
                             for ix in range(save_every):
-                                self.backend.save_step(self.tmp_state[i], self.tmp_accepted[i])
+                                self.backend.save_step(self.tmp_state[ix], self.tmp_accepted[ix])
                             self.ct_save = 0
                             self.tmp_state = []
                             self.tmp_accepted = []
@@ -521,7 +521,7 @@ class _FunctionWrapper(object):
             return self.f(x, *self.args, **self.kwargs)
         except:  # pragma: no cover
             import traceback
-            print("emcee: Exception while calling your likelihood function:")
+            print("my_emcee: Exception while calling your likelihood function:")
             print("  params:", x)
             print("  args:", self.args)
             print("  kwargs:", self.kwargs)

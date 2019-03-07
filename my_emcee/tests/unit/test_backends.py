@@ -9,7 +9,7 @@ import numpy as np
 
 import pytest
 
-from emcee import backends, EnsembleSampler
+from my_emcee import backends, EnsembleSampler
 
 import h5py
 

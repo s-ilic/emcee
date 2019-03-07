@@ -16,19 +16,19 @@ if sys.version_info[0] < 3:
 else:
     import builtins
 builtins.__EMCEE_SETUP__ = True
-import emcee  # NOQA
+import my_emcee  # NOQA
 
 setup(
     name="my_emcee",
-    version=emcee.__version__,
+    version=my_emcee.__version__,
     author="Daniel Foreman-Mackey",
     author_email="foreman.mackey@gmail.com",
     packages=[
-        "emcee",
-        "emcee.moves", "emcee.backends",
-        "emcee.tests", "emcee.tests.unit", "emcee.tests.integration",
+        "my_emcee",
+        "my_emcee.moves", "my_emcee.backends",
+        "my_emcee.tests", "my_emcee.tests.unit", "my_emcee.tests.integration",
     ],
-    url="http://emcee.readthedocs.io",
+    url="http://my_emcee.readthedocs.io",
     license="MIT",
     description=("The Python ensemble sampling toolkit for affine-invariant "
                  "MCMC"),

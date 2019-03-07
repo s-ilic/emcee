@@ -5,7 +5,7 @@ from __future__ import division, print_function
 import pytest
 import numpy as np
 
-from emcee.autocorr import integrated_time, AutocorrError
+from my_emcee.autocorr import integrated_time, AutocorrError
 
 
 def get_chain(seed=1234, ndim=3, N=100000):

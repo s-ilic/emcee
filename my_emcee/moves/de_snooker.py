@@ -15,7 +15,7 @@ class DESnookerMove(RedBlueMove):
     <http://link.springer.com/article/10.1007/s11222-008-9104-9>`_.
 
     Credit goes to GitHub user `mdanthony17 <https://github.com/mdanthony17>`_
-    for proposing this as an addition to the original emcee package.
+    for proposing this as an addition to the original my_emcee package.
 
     Args:
         gammas (Optional[float]): The mean stretch factor for the proposal

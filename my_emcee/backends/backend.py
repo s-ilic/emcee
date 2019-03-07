@@ -134,7 +134,7 @@ class Backend(object):
                 the chain as burn-in. (default: ``0``)
 
         Other arguments are passed directly to
-        :func:`emcee.autocorr.integrated_time`.
+        :func:`my_emcee.autocorr.integrated_time`.
 
         Returns:
             array[ndim]: The integrated autocorrelation time estimate for the

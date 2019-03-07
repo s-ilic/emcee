@@ -10,7 +10,7 @@ except ImportError:
 
         def __init__(self, *args, **kwargs):
             raise ImportError(
-                "The MPIPool from emcee has been forked to "
+                "The MPIPool from my_emcee has been forked to "
                 "https://github.com/adrn/schwimmbad, "
                 "please install that package to continue using the MPIPool"
             )

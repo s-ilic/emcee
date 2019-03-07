@@ -8,7 +8,7 @@ from itertools import product
 import pytest
 import numpy as np
 
-from emcee import moves, backends, EnsembleSampler
+from my_emcee import moves, backends, EnsembleSampler
 
 __all__ = ["test_shapes", "test_errors", "test_thin", "test_vectorize"]
 

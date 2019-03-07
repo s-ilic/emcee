@@ -6,7 +6,7 @@ import pytest
 import numpy as np
 from itertools import product
 
-from emcee import moves
+from my_emcee import moves
 
 from .test_proposal import _test_normal, _test_uniform
 

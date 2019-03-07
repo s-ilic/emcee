@@ -42,7 +42,7 @@ def get_progress_bar(display, total):
     if display:
         if tqdm is None:
             logging.warn("You must install the tqdm library to use progress "
-                         "indicators with emcee")
+                         "indicators with my_emcee")
             return _NoOpPBar()
         else:
             if display is True:

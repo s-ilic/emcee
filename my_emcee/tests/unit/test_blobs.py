@@ -5,7 +5,7 @@ from __future__ import division, print_function
 import pytest
 import numpy as np
 
-from emcee import backends, EnsembleSampler
+from my_emcee import backends, EnsembleSampler
 
 __all__ = ["test_blob_shape"]
 
