@@ -200,7 +200,7 @@ class Backend(object):
             raise ValueError("invalid acceptance size; expected {0}"
                              .format(nwalkers))
 
-    def save_step(self, states, accepteds, do_save):
+    def save_step(self, state, accepted):
         """Save a step to the backend
 
         Args:
@@ -209,18 +209,14 @@ class Backend(object):
                 or not the proposal for each walker was accepted.
 
         """
-        # self._check(state, accepted)
-        self._check(states[-1], accepteds[-1])
+        self._check(state, accepted)
 
-        if do_save:
-            for i, state in enumerate(states):
-                ix = self.iteration - len(states) + i + 1
-                self.chain[ix, :, :] = state.coords
-                self.log_prob[ix, :] = state.log_prob
-                if state.blobs is not None:
-                    self.blobs[ix, :] = state.blobs
-        self.accepted += accepteds[-1]
-        self.random_state = states[-1].random_state
+        self.chain[self.iteration, :, :] = state.coords
+        self.log_prob[self.iteration, :] = state.log_prob
+        if state.blobs is not None:
+            self.blobs[self.iteration, :] = state.blobs
+        self.accepted += accepted
+        self.random_state = state.random_state
         self.iteration += 1
 
     def __enter__(self):
