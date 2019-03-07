@@ -213,11 +213,12 @@ class Backend(object):
         self._check(states[-1], accepteds[-1])
 
         if do_save:
-            for state in states:
-                self.chain[self.iteration, :, :] = state.coords
-                self.log_prob[self.iteration, :] = state.log_prob
+            for i, state in enumerate(states):
+                ix = self.iteration - len(states) + i + 1
+                self.chain[ix, :, :] = state.coords
+                self.log_prob[ix, :] = state.log_prob
                 if state.blobs is not None:
-                    self.blobs[self.iteration, :] = state.blobs
+                    self.blobs[ix, :] = state.blobs
         self.accepted += accepteds[-1]
         self.random_state = states[-1].random_state
         self.iteration += 1
