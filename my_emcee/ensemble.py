@@ -326,9 +326,8 @@ class EnsembleSampler(object):
                         self.ct_save += 1
                         self.tmp_state.append(state)
                         self.tmp_accepted.append(accepted)
+                        self.backend.save_step(self.tmp_state, self.tmp_accepted, self.ct_save == save_every)
                         if self.ct_save == save_every:
-                            for ix in range(save_every):
-                                self.backend.save_step(self.tmp_state[ix], self.tmp_accepted[ix])
                             self.ct_save = 0
                             self.tmp_state = []
                             self.tmp_accepted = []
