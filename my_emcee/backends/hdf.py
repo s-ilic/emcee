@@ -175,8 +175,7 @@ class HDFBackend(Backend):
                 or not the proposal for each walker was accepted.
 
         """
-        # self._check(state, accepted)
-        self._check(states[-1], accepteds[-1])
+        self._check(state, accepted)
 
         with self.open("a") as f:
             g = f[self.name]
